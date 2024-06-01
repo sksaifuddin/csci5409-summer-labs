@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  app1:
+    build: ./app1
+    image: shaiksaifuddin/app1
+    container_name: app1
+    ports:
+      - "3000:3000"
+    networks:
+      - compose-networks
+    volumes:
+      - lab-volume:/storage
+
+  app2:
+    build: ./app2
+    image: shaiksaifuddin/app2
+    container_name: app2
+    ports:
+      - "3001:3001"
+    networks:
+      - compose-networks
+    volumes:
+      - lab-volume:/storage
+
+networks:
+  compose-networks:
+    driver: bridge
+
+volumes:
+  lab-volume:
